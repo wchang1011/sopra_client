@@ -7,17 +7,6 @@ import BaseContainer from "components/ui/BaseContainer";
 import PropTypes from "prop-types";
 import "styles/views/Game.scss";
 
-const Player = ({user}) => (
-  <div className="player container">
-    <div className="player username">{user.username}</div>
-    <div className="player name">{user.name}</div>
-    <div className="player id">id: {user.id}</div>
-  </div>
-);
-
-Player.propTypes = {
-  user: PropTypes.object
-};
 
 const Game = () => {
   // use react-router-dom's hook to access the history
@@ -31,11 +20,18 @@ const Game = () => {
   const [users, setUsers] = useState(null);
 
   const logout = () => {
+
+    // const requestBody = JSON.stringify({username, password});
+    // let id = localStorage.getItem('id');
+    // const response = api.put('/users/logout/${id}', requestBody);
     localStorage.removeItem('token');
     localStorage.removeItem('id');
     history.push('/home');
   }
 
+  const showProfile = (user) => {
+      history.push('/game/profile/'+ user.id)
+  }
   // the effect hook can be used to react to change in your component.
   // in this case, the effect hook is only run once, the first time the component is mounted
   // this can be achieved by leaving the second argument an empty array.
@@ -74,6 +70,17 @@ const Game = () => {
   }, []);
 
   let content = <Spinner/>;
+
+  const Player = ({user}) => (
+    <div className="player container">
+        <div className="player username" onClick={ () => showProfile(user)}>user: {user.username}</div>
+        <div className="player id">id: {user.id}</div>
+    </div>
+  );
+
+  Player.propTypes = {
+    user: PropTypes.object
+  };
 
   if (users) {
     content = (

@@ -13,7 +13,7 @@ however be sure not to clutter your files with an endless amount!
 As a rule of thumb, use one file per component and only add small,
 specific components that belong to the main one in the same file.
  */
-const FormField = props => {
+const FormFieldInput = props => {
   return (
     <div className="register field">
       <label className="register label">
@@ -29,10 +29,33 @@ const FormField = props => {
   );
 };
 
-FormField.propTypes = {
+const FormFieldPassword = props => {
+    return (
+        <div className="register field">
+            <label className="register label">
+                {props.label}
+            </label>
+            <input
+                type = "password"
+                className="register input"
+                placeholder="enter here.."
+                value={props.value}
+                onChange={e => props.onChange(e.target.value)}
+            />
+        </div>
+    );
+};
+
+FormFieldInput.propTypes = {
   label: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func
+};
+
+FormFieldPassword.propTypes = {
+    label: PropTypes.string,
+    value: PropTypes.string,
+    onChange: PropTypes.func
 };
 
 const Register = props => {
@@ -97,12 +120,12 @@ const Register = props => {
         </div>
         <h3 className="register title">Register Here.</h3>
         <div className="register form">
-          <FormField
+          <FormFieldInput
             label="Username"
             value={username}
             onChange={un => setUsername(un)}
           />
-          <FormField
+          <FormFieldPassword
             label="Password"
             value={password}
             onChange={n => setPassword(n)}

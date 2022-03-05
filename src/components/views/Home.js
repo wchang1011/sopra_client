@@ -12,7 +12,7 @@ As a rule of thumb, use one file per component and only add small,
 specific components that belong to the main one in the same file.
  */
 
-const Home = props => {
+const Home = () => {
     const history = useHistory();
     const openLogin = async () => {
         try {

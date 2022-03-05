@@ -7,7 +7,7 @@
   for more information visit https://sass-lang.com/guide
  */
 
-.game {
+.profile {
   &.container {
     background: $background;
     padding: 1.5em;
@@ -21,35 +21,40 @@
     list-style: none;
     padding-left: 0;
   }
-  &.user-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
   & p,h2 {
     margin: 0.5em 0;
   }
 }
 
-.player {
+.playerProfile {
   &.container {
     margin: 0.5em 0;
     width: 20em;
     padding: 10px;
     border-radius: $borderRadius;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     background: lighten($background, 5);
   }
   &.username {
+    margin: 0.3em 0;
     font-weight: 500;
     color: $accent;
   }
-  &.id {
-    margin-left: auto;
-    margin-right: 10px;
-    font-family: $fontMono;
-    font-weight: 300;
+  &.status {
+    margin: 0.3em 0;
+    font-weight: 500;
+    color: $accent;
+  }
+  &.createTime {
+    margin: 0.3em 0;
+    font-weight: 500;
+    color: $accent;
+  }
+  &.birthDate {
+    margin: 0.3em 0;
+    font-weight: 500;
+    color: $accent;
   }
 }

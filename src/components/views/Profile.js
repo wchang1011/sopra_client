@@ -81,7 +81,7 @@ const Profile = () => {
     const PlayerProfile = ({user}) => (
         <div className="playerProfile container">
             <div className="playerProfile username">username: {user.username}</div>
-            <div className="playerProfile status">online status: {user.status}</div>
+            <div className="playerProfile status">logged_in: {user.status.toString()}</div>
             <div className="playerProfile createTime">createTime: {user.createTime}</div>
             <div className="playerProfile birthDate">birthDate: {user.birthDate}</div>
         </div>

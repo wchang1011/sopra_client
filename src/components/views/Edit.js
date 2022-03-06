@@ -44,7 +44,7 @@ const Edit = props => {
     const doEdit = async () => {
         try {
             const requestBody = JSON.stringify({username, birthDate});
-            const response = await api.put(`/users/${params["id"]}/edit`, requestBody);
+            const response = await api.put(`/users/${params["id"]}`, requestBody);
 
             // Get the returned user and update a new object.
             const user = new User(response.data);

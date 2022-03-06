@@ -62,21 +62,21 @@ const Edit = props => {
 
     return (
         <BaseContainer>
-            <div className="register container">
-                <h3 className="register title">Edit Here.</h3>
-                <div className="register form">
+            <div className="edit container">
+                <h3 className="edit title">Edit Here.</h3>
+                <div className="edit form">
                     <FormFieldInput
                         label="Username"
                         value={username}
                         onChange={un => setUsername(un)}
                     />
                     <FormFieldInput
-                        label="BirthDate"
+                        label="BirthDate (format:YYYY-MM-DD)"
                         value={birthDate}
                         onChange={n => setBirthDate(n)}
                     />
                     <Button
-                        disabled={!username}
+                        disabled={!username&!birthDate}
                         width="100%"
                         onClick={() => doEdit()}
                     >

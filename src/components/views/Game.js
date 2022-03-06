@@ -2,16 +2,17 @@ import {useEffect, useState} from 'react';
 import {api, handleError} from 'helpers/api';
 import {Spinner} from 'components/ui/Spinner';
 import {Button} from 'components/ui/Button';
-import {useHistory} from 'react-router-dom';
+import {useHistory, useParams} from 'react-router-dom';
 import BaseContainer from "components/ui/BaseContainer";
 import PropTypes from "prop-types";
 import "styles/views/Game.scss";
+import User from "../../models/User";
 
 
 const Game = () => {
   // use react-router-dom's hook to access the history
   const history = useHistory();
-
+  const params = useParams();
   // define a state variable (using the state hook).
   // if this variable changes, the component will re-render, but the variable will
   // keep its value throughout render cycles.
@@ -21,9 +22,8 @@ const Game = () => {
 
   const logout = () => {
 
-    // const requestBody = JSON.stringify({username, password});
-    // let id = localStorage.getItem('id');
-    // const response = api.put('/users/logout/${id}', requestBody);
+    const response = api.put(`/users/${localStorage.getItem('id')}/logout`);
+
     localStorage.removeItem('token');
     localStorage.removeItem('id');
     history.push('/home');

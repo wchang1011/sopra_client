@@ -27,9 +27,8 @@ const Profile = () => {
 
     const logout = () => {
 
-        // const requestBody = JSON.stringify({username, password});
-        // let id = localStorage.getItem('id');
-        // const response = api.put('/users/logout/${id}', requestBody);
+        const response = api.put(`/users/${localStorage.getItem('id')}/logout`);
+
         localStorage.removeItem('token');
         localStorage.removeItem('id');
         history.push('/home');

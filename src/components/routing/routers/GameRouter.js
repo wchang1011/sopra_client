@@ -3,6 +3,7 @@ import Game from "components/views/Game";
 import PropTypes from 'prop-types';
 import Profile from "../../views/Profile";
 import Edit from "../../views/Edit";
+import {EditGuard} from "../routeProtectors/EditGuard";
 
 const GameRouter = props => {
   /**
@@ -20,7 +21,9 @@ const GameRouter = props => {
             <Profile/>
       </Route>
       <Route exact path={`${props.base}/profile/:id/edit`}>
-            <Edit/>
+          <EditGuard>
+              <Edit/>
+          </EditGuard>
       </Route>
     </div>
   );

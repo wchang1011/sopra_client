@@ -1,60 +1,48 @@
 @import 'styles/theme';
 
-/* The '&' is a shorthand for the containing element,
-  so for example a '&.user-list' inside .game will compile to
-  .game.user-list
-
-  for more information visit https://sass-lang.com/guide
- */
-
 .edit {
   &.container {
-    background: $background;
-    padding: 1.5em;
-    border-radius: $borderRadius;
+    margin-top: 2em;
+    min-height: 300px;
+    /* we include the center mixin defined in _theme.scss and save three duplicate lines :) */
+    @include center;
+    flex-direction: column;
+  }
+  &.form {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    width: 60%;
+    max-width: 30em;
+    height: 20em;
+    font-size: 16px;
+    font-weight: 300;
+    padding-left: 37px;
+    padding-right: 37px;
+    border-radius: 0.75em;
+    background-color: $background;
+    transition: opacity 0.5s ease, transform 0.5s ease;
     box-shadow: $dropShadow;
   }
-  &.user-list {
-    list-style: none;
-    padding-left: 0;
-  }
-  & p,h2 {
-    margin: 0.5em 0;
-  }
-}
-
-.playerProfile {
-  &.container {
-    margin: 0.5em 0;
-    width: 20em;
-    padding: 10px;
-    border-radius: $borderRadius;
+  &.field {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    background: lighten($background, 5);
+    justify-content: center;
   }
-  &.username {
-    margin: 0.3em 0;
-    font-weight: 500;
-    color: $accent;
+  &.input {
+    height: 35px;
+    padding-left: 15px;
+    margin-left: -4px;
+    border: none;
+    border-radius: 0.75em;
+    margin-bottom: 20px;
+    background: transparentize(white, 0.85);
+    color: $textColor;
   }
-  &.status {
-    margin: 0.3em 0;
-    font-weight: 500;
-    color: $accent;
-  }
-  &.createTime {
-    margin: 0.3em 0;
-    font-weight: 500;
-    color: $accent;
-  }
-  &.birthDate {
-    margin: 0.3em 0;
-    font-weight: 500;
-    color: $accent;
+  &.label {
+    color: $textColor;
+    margin-bottom: 10px;
+    text-transform: lowercase;
+    font-weight: 300;
   }
 }

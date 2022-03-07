@@ -27,7 +27,7 @@ const Profile = () => {
 
     const logout = () => {
 
-        const response = api.put(`/users/${localStorage.getItem('id')}/logout`);
+        const response = api.put(`/logout/${localStorage.getItem('id')}`);
 
         localStorage.removeItem('token');
         localStorage.removeItem('id');

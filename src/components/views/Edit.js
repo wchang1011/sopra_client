@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {api, handleError} from 'helpers/api';
-import User from 'models/User';
-import {NavLink, useHistory, useParams} from 'react-router-dom';
+import {useHistory, useParams} from 'react-router-dom';
 import {Button} from 'components/ui/Button';
 import 'styles/views/Register.scss';
 import BaseContainer from "components/ui/BaseContainer";
@@ -46,11 +45,8 @@ const Edit = props => {
             const requestBody = JSON.stringify({username, birthDate});
             const response = await api.put(`/users/${params["id"]}`, requestBody);
 
-            // Get the returned user and update a new object.
-            const user = new User(response.data);
-
             // Login successfully worked --> navigate to the route /game in the GameRouter
-            history.push('/game/profile/'+user.id);
+            history.push('/game/profile/'+params["id"]);
         } catch (error) {
             alert(`Something went wrong during the login: \n${handleError(error)}`);
         }
